@@ -1,10 +1,17 @@
+// Modules
+const path = require("path")
 const {
-    Book_Service
-} = require("../services/books-service")
+    Entities_Service
+} = require("../services/entity-service")
+
+// Models
+const {
+    Book
+} = require("../models/book-model")
 
 class Books_Controller {
     constructor() {
-        this.booksService = new Book_Service()
+        this.booksService = new Entities_Service('book', Book, path.join(__dirname, '../books.json'))
     }
 
     getAllBooks() {
@@ -30,7 +37,7 @@ class Books_Controller {
 
     addNewBook(book) {
         try {
-            this.booksService.addBook(book)
+            this.booksService.create(book)
             return true
         } catch (error) {
             console.error(error)

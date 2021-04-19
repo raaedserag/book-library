@@ -59,7 +59,7 @@ async function backToMainMenu() {
 
 async function viewAllBooks(next) {
     // If no books exist, return to main menu
-    if (!booksHandler.booksService.booksCount) {
+    if (!booksHandler.booksService.count) {
         console.log("No books exist")
         viewMainMenu()
         return;
